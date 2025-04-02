@@ -2,7 +2,6 @@
 //JSON: JavaScript Object Notation is a text based format not a programming language
 
 //JSON syntax : keys should be in string format and there should not be any traling commas
-
 let jsonarr = [
     {
         "name" : "Kartik",
@@ -10,6 +9,8 @@ let jsonarr = [
         "profession" : "Developer"
     }
 ]
+
+
 //JS Syntax this is normal syntax that we use to define it in js for object
 let arr = [
     {
