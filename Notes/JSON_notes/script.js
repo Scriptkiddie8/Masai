@@ -35,14 +35,3 @@ let jconfig = JSON.parse(config);
 console.log(jconfig);
 
 
-
-
-const rocket = {
-    name : "falcon"
-};
-
-rocket.launch = ()=>{
-    console.log("rocket"+ this.name);
-}
-
-rocket.launch();
