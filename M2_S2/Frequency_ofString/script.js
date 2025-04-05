@@ -5,7 +5,4 @@ for(let char of str){
     obj[char] = (obj[char] || 0)+1;
 }
 
-console.log(obj.a)
-
-// console.log(obj)
-// console.log(obj2)
+console.log(obj)
