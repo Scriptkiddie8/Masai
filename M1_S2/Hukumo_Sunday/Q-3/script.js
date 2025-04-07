@@ -1,7 +1,7 @@
 function check (str, element){
 
     let cnt=0;
-    for(let i=0; i<str.length-element.length; i++){
+    for(let i=0; i<str.length; i++){
         let result = "";
         for(let j=0; j<element.length; j++){
             if(str[i+j] == element[j]){
