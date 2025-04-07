@@ -11,7 +11,6 @@ function createStudentManager(){
                     subjects : {},
                     avg_marks : null,
                 }
-                return student[id];
             }
             else{
                 console.log(`Student with ${id} already exist`);
