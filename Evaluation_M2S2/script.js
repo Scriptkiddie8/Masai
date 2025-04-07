@@ -103,15 +103,19 @@ function createStudentManager(){
 
         getfailedstudent(){
             for(let id in student){
+                let failedSubjects = [];
                 for(let subject in student[id].subjects){
                     let marks = student[id].subjects[subject];
-                    if(marks<35){
-                        console.log(`${student[id].name} is failed in ${subject}`)
-                        break;
+                    if(marks < 35){
+                        failedSubjects.push(subject);
                     }
+                }
+                if(failedSubjects.length > 0){
+                    console.log(`${student[id].name} is failed in: ${failedSubjects.join(", ")}`);
                 }
             }
         },
+        
 
         enrolledsubjects(){
             let frequency = {};
