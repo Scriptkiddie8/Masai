@@ -80,7 +80,7 @@ function createStudentManager(){
             let difficult = {};
                 for(let id in student){
                     for(let subject in student[id].subjects){
-                        let marks = Object.values(student[id].subjects[subject]);
+                        let marks = student[id].subjects[subject];
                         if(marks<40){
                             if(difficult[subject]){
                                 difficult[subject]++;
@@ -92,10 +92,11 @@ function createStudentManager(){
                     }
                 }
                 let half = Object.keys(student).length/2;
+                half = Math.floor(half)
                 for(let subject in difficult){
-                    let value = Object.values(difficult[subject])
+                    let value = difficult[subject]
                     if(value > half){
-                        console.log(`${difficult[subject]} is difficult`)
+                        console.log(`${subject} is difficult`)
                     }
                 }
         },
@@ -103,7 +104,7 @@ function createStudentManager(){
         getfailedstudent(){
             for(let id in student){
                 for(let subject in student[id].subjects){
-                    let marks = Object.values(student[id].subjects[subject]);
+                    let marks = student[id].subjects[subject];
                     if(marks<35){
                         console.log(`${student[id].name} is failed in ${subject}`)
                         break;
@@ -133,6 +134,8 @@ function createStudentManager(){
 
 let config = createStudentManager();
 
+
+//student 1
 config.addstudent(1, "Kartik");
 config.addsubject(1, "Math");
 config.addsubject(1, "English");
@@ -141,6 +144,28 @@ config.updatescore(1, "Math", 29)
 config.getaveragemarks(1)
 let student1 = config.getstudentdetail(1)
 console.log(student1)
+
+//student 2
+config.addstudent(2, "Jack");
+config.addsubject(2, "Math");
+config.addsubject(2, "English");
+config.updatescore(2, "English", 88)
+config.updatescore(2, "Math", 39)
+config.getaveragemarks(2)
+let student2 = config.getstudentdetail(2)
+console.log(student2)
+
+//student 3
+config.addstudent(3, "Rick");
+config.addsubject(3, "Math");
+config.addsubject(3, "English");
+config.updatescore(3, "English", 32)
+config.updatescore(3, "Math", 19)
+config.getaveragemarks(3)
+let student3 = config.getstudentdetail(3)
+console.log(student3)
+
+//Valid for all students
 config.gettopstudent()
 config.getfailedstudent()
 config.getdifficultsubject()
