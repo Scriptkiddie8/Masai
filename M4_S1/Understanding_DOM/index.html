@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container{
+        width: 150px;
+        height: 150px;
+        border: 2px solid grey;
+    }
+</style>
+<body>
+    <h1 id="heading1">This is my first heading</h1>
+
+
+    <div class="container">
+
+    </div>
+
+    <p>para 1</p>
+    <p>para 2</p>
+    <p>para 3</p>
+    <p>para 4</p>
+
+    <div class="container">
+        
+    </div>
+
+</body>
+</html>
+
+<script>
+    document.getElementById('heading1').innerText = "Welcome to the DOM World!"
+
+    let config = document.getElementsByTagName('p');
+    
+    for(let i=0; i<config.length; i++){
+        config[i].style.color = "blue"
+    }
+
+    document.querySelector('.container').style.backgroundColor = "yellow"
+</script>
