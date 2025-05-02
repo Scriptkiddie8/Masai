@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Propagation Demo</title>
+</head>
+<body>
+  <div id="outer" style="padding: 30px; background-color: lightblue;">
+    Outer Div
+    <button id="outer-btn">Outer Button</button>
+    <div id="middle" style="padding: 30px; background-color: lightgreen; margin-top: 10px;">
+      Middle Div
+      <button id="middle-btn">Middle Button</button>
+      <div id="inner" style="padding: 30px; background-color: lightcoral; margin-top: 10px;">
+        Inner Div
+        <button id="inner-btn">Inner Button</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function addListener(element, name) {
+      element.addEventListener('click', () => {
+        alert(`${name} clicked (capturing)`);
+      }, true);
+
+      element.addEventListener('click', () => {
+        alert(`${name} clicked (bubbling)`);
+      });
+    }
+
+    addListener(document.getElementById('outer'), 'Outer Div');
+    addListener(document.getElementById('middle'), 'Middle Div');
+    addListener(document.getElementById('inner'), 'Inner Div');
+
+    addListener(document.getElementById('outer-btn'), 'Outer Button');
+    addListener(document.getElementById('middle-btn'), 'Middle Button');
+
+    const innerBtn = document.getElementById('inner-btn');
+
+    innerBtn.addEventListener('click', (e) => {
+      alert('Inner Button clicked (capturing)');
+    }, true);
+
+    innerBtn.addEventListener('click', (e) => {
+      alert('Inner Button clicked (bubbling, propagation stopped)');
+      e.stopPropagation();
+    });
+  </script>
+</body>
+</html>
