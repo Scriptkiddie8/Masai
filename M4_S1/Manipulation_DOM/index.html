@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>Item1</li>
+        <li>Item2</li>
+        <li>Item3</li>
+    </ul>
+    <button>Add Item</button>
+</body>
+</html>
+
+<script>
+    let list = document.querySelector('ul');
+
+    let btn = document.querySelector('button');
+    btn.addEventListener('click', ()=>{
+        let newlist = document.createElement('li');
+        newlist.innerText = 'New Item Added!';
+        list.appendChild(newlist);
+
+        let pos = list.children.length + 1;
+
+            if(pos%2==0){
+                newlist.style.fontStyle = 'italic'
+                newlist.style.color = 'red'
+            }
+            else{
+                newlist.style.fontWeight = 'bold'
+                newlist.style.color = 'blue'
+            }
+    })
+
+</script>
