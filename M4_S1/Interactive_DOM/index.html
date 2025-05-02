@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            width: 150px;
+            height: 150px;
+            border: 2px solid grey;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div>It is a Div</div>
+
+    <input type="text" placeholder="Color Name" id="clr">
+    <input type="text" placeholder="Text Content" id="text">
+
+    <button id="changecolor">Change BackGround</button>
+    <button id="textbtn">Update Text</button>
+</body>
+</html>
+
+<script>
+    let inp1 = document.querySelector('#clr');
+    let div = document.querySelector('div');
+    let color = '';
+    inp1.addEventListener('input', (event)=>{
+        color = event.target.value;
+    })
+
+    let colorbtn = document.querySelector('#changecolor');
+    colorbtn.addEventListener('click' , () => {
+        const testDiv = document.createElement('div');
+        testDiv.style.color = color;
+
+        if (testDiv.style.color === '') {
+            alert("Not a valid color");
+        } else {
+            div.style.backgroundColor = color;
+        }
+    })
+
+    let textinp = document.querySelector('#text');
+    let textbtn = document.querySelector('#textbtn');
+    textbtn.addEventListener('click', ()=>{
+        div.innerText = textinp.value;
+    })
+</script>
