@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" id="inp" />
+    <button id="addtask">Add Task</button>
+    <ul class="list"></ul>
+
+    <div class="task" style="margin-top: 100px;">
+        <button id="alltask">All Task</button>
+        <button id="comtask">Completed Task</button>
+        <button id="inctask">Incomplete Task</button>
+        <button id="sorttask">Sort Task</button>
+    </div>
+  </body>
+</html>
+
+<script>
+  const inp = document.querySelector("#inp");
+  const addbtn = document.querySelector("#addtask");
+  const list = document.querySelector(".list");
+  const alltaskBtn = document.querySelector("#alltask");
+  const completeBtn = document.querySelector("#comtask");
+  const incompleteBtn = document.querySelector("#inctask");
+  const sortBtn = document.querySelector("#sorttask");
+
+  addbtn.addEventListener("click", () => {
+
+    const li = document.createElement("li");
+    const checkbox = document.createElement("input");
+    const delbtn = document.createElement("button");
+    
+
+    li.innerText = inp.value;
+    checkbox.type = "checkbox"; // checkbox added
+    delbtn.innerText = "Delete";
+    delbtn.addEventListener("click", () => {
+      li.remove();
+    });
+
+    li.appendChild(checkbox); // appended to li
+    li.appendChild(delbtn);
+    list.appendChild(li);
+    inp.value = ''
+    
+  });
+
+  //displaying all the task 
+  alltaskBtn.addEventListener('click', ()=>{
+    let cnt =0;
+    list.querySelectorAll('li').forEach((ele)=>{
+        ele.style.display = 'block';
+        cnt++;
+    })
+    const displaycnt = document.createElement('p')
+    displaycnt.innerText = `Total: ${cnt}`;
+    alltaskBtn.append(displaycnt)
+  })
+
+  //displaying completed tasks
+  completeBtn.addEventListener('click', ()=>{
+    let cnt =0;
+    list.querySelectorAll('li').forEach(ele =>{
+        const checkbox = ele.querySelector("input[type='checkbox']")
+        checkbox.checked ? (ele.style.display = 'block', cnt++) : ele.style.display = 'none';
+    })
+    const displaycnt = document.createElement('p')
+    displaycnt.innerText = `Total: ${cnt}`;
+    completeBtn.append(displaycnt)
+  })
+
+  //display incompleted task
+  incompleteBtn.addEventListener('click', ()=>{
+    let cnt =0;
+    list.querySelectorAll('li').forEach(ele =>{
+        const checkbox = ele.querySelector("input[type='checkbox']")
+        !checkbox.checked ? (ele.style.display = 'block', cnt++) : ele.style.display = 'none';
+    })
+    const displaycnt = document.createElement('p')
+    displaycnt.innerText = `Total: ${cnt}`;
+    incompleteBtn.append(displaycnt)
+  })
+
+    //sorting tasks accordingly
+    sortBtn.addEventListener("click", () => {
+    const items = Array.from(list.querySelectorAll("li"));
+
+    items.sort((a, b) => {
+        const textA = a.childNodes[0].nodeValue.trim().toLowerCase();
+        const textB = b.childNodes[0].nodeValue.trim().toLowerCase();
+        return textA.localeCompare(textB);
+    });
+
+
+    list.innerHTML = "";
+    items.forEach(item => list.appendChild(item));
+    });
+
+
+</script>
