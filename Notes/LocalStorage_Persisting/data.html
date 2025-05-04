@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>ToDO-List</h2>
+    <input type="text" id="input">
+    <button onclick="addlist()">Add List</button>
+    <button onclick="deletelist()">Delete ALL</button>
+    <ul id="todolist"></ul>
+</body>
+</html>
+<script>
+    function addlist(){
+        let todoinput = document.getElementById("input").value;
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+        tasks.push(todoinput);
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        displayData();
+        document.getElementById("input").value = '';
+    }
+
+    function displayData(){
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+        let todolist = document.getElementById('todolist');
+        todolist.innerHTML = "";
+
+        tasks.forEach((ele)=>{
+            let li = document.createElement('li');
+            li.innerText = ele;
+            li.style.color = 'black'
+            todolist.appendChild(li)
+        })
+    }
+
+    function deletelist(){
+        localStorage.removeItem('tasks');
+        displayData();
+    }
+
+    displayData();
+</script>
