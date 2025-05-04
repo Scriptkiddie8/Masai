@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="input" placeholder="Add Tasks here...">
+    <button onclick="addtasks()"  id="addtask">Add Task</button>
+    <button onclick="deleteAlltasks()"  id="deleteall">Delete All Task</button>
+    <ul id="tasklist"></ul>
+</body>
+</html>
+<script>
+    function addtasks(){
+        if(!document.getElementById('searchbar')){
+            let searchbar = document.createElement('input');
+            let searchbtn = document.createElement('button');
+            searchbar.type = "text";
+            searchbar.id = "searchbar";
+            searchbar.placeholder = "Search...";
+            searchbtn.id = "searchbtn";
+            searchbtn.innerText = "Search"
+    
+            searchbtn.addEventListener('click', () => {
+                
+            });
+    
+            document.body.appendChild(searchbar);
+            document.body.appendChild(searchbtn);
+        }
+
+        let input = document.getElementById("input").value;
+        sendData(input);
+    }
+
+    //Sending data to localStorage
+    function sendData(input){ // getting innertext here as input
+
+        let tasks = JSON.parse(localStorage.getItem("tasks")) || {};
+        let cnt = Object.keys(tasks).length + 1;
+
+        // Create dynamic key
+        let taskKey = "task" + cnt;
+
+        // Add task to the tasks object
+        tasks[taskKey] = {
+            id: cnt,
+            title: input,
+            status: false
+        };
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+        displayData();
+    }
+
+    function displayData(){
+        let tasks = JSON.parse(localStorage.getItem('tasks'));
+        let tasklist = document.getElementById('tasklist')
+        tasklist.innerHTML= '';
+        
+        for(let key in tasks){
+            let list = document.createElement('li')
+            let box = document.createElement('input')
+            let deletebtn = document.createElement('button')
+            list.innerText = tasks[key].title;
+            deletebtn.className = 'deletebtn';
+            deletebtn.innerText = 'Delete';
+            box.type = 'checkbox';
+            list.appendChild(box);
+            list.appendChild(deletebtn);
+            tasklist.appendChild(list);
+            deletebtn.addEventListener('click', ()=>{
+                delete tasks[key];
+                localStorage.setItem('tasks', JSON.stringify(tasks));
+                displayData();
+            })
+
+        }
+    }
+
+    function deleteAlltasks(){
+        localStorage.removeItem('tasks');
+        displayData();
+    }
+
+</script>
