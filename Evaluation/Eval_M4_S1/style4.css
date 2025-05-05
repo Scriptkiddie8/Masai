@@ -120,13 +120,12 @@ footer>div>div>div{
     font-size: 30px;
 }
 
-
-footer>div>div>div>i.bxl-whatsapp{
+footer>div>div>div>a>i.bxl-whatsapp{
     color: rgb(37, 204, 99);
 }
-footer>div>div>div>i.bxl-instagram{
+footer>div>div>div>a>i.bxl-instagram{
     color: rgb(233, 89, 91);
 }
-footer>div>div>div>i.bxl-twitter{
+footer>div>div>div>a>i.bxl-twitter{
     color: rgb(0, 157, 236);
 }
