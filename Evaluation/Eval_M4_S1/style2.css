@@ -45,9 +45,9 @@ header>div.nav{
     justify-content: space-evenly;
 }
 
-
 header>div.nav>a:hover{
     text-decoration: underline;
+    color: rgb(41, 38, 38);
 }
 
 header>div.nav>a{

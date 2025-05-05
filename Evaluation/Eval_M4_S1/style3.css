@@ -55,6 +55,10 @@ header>div.nav>a{
     font-size: 20px;
 }
 
+header>div.nav>a:hover{
+    color: rgb(41, 38, 38);
+}
+
 header>div>img{
     width: 30%;
     height: 100%;
