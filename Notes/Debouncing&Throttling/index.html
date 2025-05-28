@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="searchInput">
+</body>
+</html>
+<script>
+
+//when a user will type into inputbox the searchmovie function will only run if the user stops typing and after a certain time which is passed inside the setTimeout function as a delay
+//Debouncing Example:
+
+    let timer;
+    document.getElementById('searchInput').addEventListener('input', (event)=>{
+
+        clearTimeout(timer);
+        timer = setTimeout(()=>{
+            searchMovie(event.target.value);
+        }, 1000)
+    })
+
+    function searchMovie(query){
+        console.log("Making API request for: ", query);
+    }
+</script>
