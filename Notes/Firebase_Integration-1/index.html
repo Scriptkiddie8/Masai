@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    async function fetchMovies() {
+        let res = await fetch('https://moviedatabase-67518-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json');
+        let movies = await res.json();
+
+        let MoviesArray = Object.entries(movies)  //converting into array
+        let finalData = MoviesArray.map(([id, movie])=>({id, ...movie})); //formatting the array as needed
+
+        console.log(finalData);
+    }
+
+    fetchMovies();
+</script>
