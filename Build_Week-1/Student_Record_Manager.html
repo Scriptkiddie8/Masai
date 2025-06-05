@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_drop_down"
+    />
+  </head>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    input,
+    button {
+      margin: 5px;
+      padding: 8px;
+    }
+
+    #error {
+      color: red;
+    }
+
+    table {
+      width: 80%;
+      margin: 30px auto;
+      border-collapse: collapse;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background-color: white;
+    }
+
+    thead {
+      background-color: #4caf50;
+      color: white;
+    }
+
+    th,
+    td {
+      padding: 12px 16px;
+      border: 1px solid #ddd;
+      text-align: center;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+
+    .sort {
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+  <body>
+    <h1>Student Record Manager</h1>
+    <input type="text" id="name" placeholder="Name" />
+    <input type="text" id="batch" placeholder="Batch" />
+    <input type="text" id="age" placeholder="Age" />
+    <input type="text" id="score" placeholder="score" />
+
+    <button id="Submit-btn" onclick="addRecord()">Submit</button>
+    <p id="error"></p>
+
+    <table id="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Batch</th>
+          <th>
+            Age
+            <button class="sort" onclick="sortAge()">
+              <span class="material-symbols-outlined"> arrow_drop_down </span>
+            </button>
+          </th>
+          <th>
+            Score
+            <button class="sort" onclick="sortScore()">
+              <span class="material-symbols-outlined"> arrow_drop_down </span>
+            </button>
+          </th>
+          <th>Update</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </body>
+</html>
+<script>
+  let firebaseURL =
+    "https://student-record-manager-c0d09-default-rtdb.asia-southeast1.firebasedatabase.app";
+
+  let editingId = null;
+
+  async function addRecord() {
+    let name = document.getElementById("name").value;
+    let batch = document.getElementById("batch").value;
+    let age = document.getElementById("age").value;
+    let score = document.getElementById("score").value;
+    let error = document.getElementById("error");
+
+    //Check all the fields are provided
+    if (!name || !batch || !age || !score) {
+      error.innerText = "All fields are Require";
+      return;
+    }
+
+    //Checking name should only contain alphabets
+    name.split("").forEach((ele) => {
+      if (
+        !(
+          (ele >= "a" && ele <= "z") ||
+          (ele >= "A" && ele <= "Z") ||
+          ele == " "
+        )
+      ) {
+        error.innerText = "Enter Valid Name";
+        return;
+      }
+    });
+
+    //check age
+    if (isNaN(age) || Number(age) < 0) {
+      error.innerText = "Enter Valid Age";
+      return;
+    }
+
+    //check score should be in a vaid range
+    if (isNaN(score) || Number(score) < 0 || Number(score) > 100) {
+      error.innerText = "Score should be between 0 and 100!";
+      return;
+    }
+
+    let student = {
+      name: name,
+      batch: batch,
+      age: age,
+      score: score,
+    };
+
+    let url = `${firebaseURL}/student.json`;
+    let method = "POST";
+
+    if (editingId) {
+      url = `${firebaseURL}/student/${editingId}.json`;
+      method = "PUT";
+    }
+
+    let res = await fetch(url, {
+      method,
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(student),
+    });
+
+    error.style.color = "green";
+    error.innerText = "Record Added Successfully!";
+
+    document.getElementById("name").value = "";
+    document.getElementById("batch").value = "";
+    document.getElementById("age").value = "";
+    document.getElementById("score").value = "";
+
+    await displayData();
+  }
+
+  async function fetchData() {
+    let res = await fetch(`${firebaseURL}/student.json`);
+    let data = await res.json();
+    if (!data) return [];
+
+    return Object.entries(data).map(([id, student]) => ({ id, ...student }));
+  }
+
+  async function displayData(data = null) {
+    let res = data || (await fetchData());
+
+    let tablebody = document.querySelector("#table tbody");
+    tablebody.innerHTML = "";
+
+    res.forEach((student) => {
+      let tr = document.createElement("tr");
+
+      tr.innerHTML = `
+        <td>${student.name}</td>
+        <td>${student.batch}</td>
+        <td>${student.age}</td>
+        <td>${student.score}</td>
+        <td>
+        <button onclick="editDetails('${student.id}')">Edit</button>
+        <button onclick="deleteRecord('${student.id}')">Delete</button>
+      </td>
+    `;
+
+      tablebody.appendChild(tr);
+    });
+  }
+
+  async function editDetails(id) {
+    let res = await fetch(`${firebaseURL}/student/${id}.json`);
+    let student = await res.json();
+
+    document.getElementById("name").value = student.name;
+    document.getElementById("batch").value = student.batch;
+    document.getElementById("age").value = student.age;
+    document.getElementById("score").value = student.score;
+
+    editingId = id;
+
+    let update = document.getElementById("Submit-btn");
+    update.innerText = "Update";
+    update.style.backgroundColor = "#82a3c7";
+    update.style.color = "#fff";
+
+    document.getElementById("error").style.color = "blue";
+    document.getElementById("error").innerText =
+      "Editing mode - click to update";
+  }
+
+  async function deleteRecord(id) {
+    await fetch(`${firebaseURL}/student/${id}.json`, {
+      method: "DELETE",
+    });
+    await displayData();
+  }
+
+  async function sortAge() {
+    let res = await fetchData();
+    res.sort((a, b) => a.age - b.age);
+    await displayData(res);
+    // await sortScore(res);
+  }
+
+  async function sortScore() {
+    let res = await fetchData();
+
+    res.sort((a, b) => b.score - a.score);
+    await displayData(res);
+  }
+  // window.onload = displayData;
+  window.addEventListener("DOMContentLoaded", () => {
+    displayData();
+  });
+</script>
