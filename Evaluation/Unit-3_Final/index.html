@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #cards {
+      height: 100vh;
+      width: 80vw;
+      border: 2px solid black;
+    }
+    .card {
+      height: 20vh;
+      width: 20vw;
+      border: 2px solid blue;
+    }
+  </style>
+  <body>
+    <h1>Evaluation</h1>
+    <div id="cards"></div>
+  </body>
+</html>
+
+<script>
+  async function check() {
+    let res = await fetch("https://rickandmortyapi.com/api/character");
+    let data = await res.json();
+    // console.log(data);
+    for (let key in data) {
+      if (key == "results") {
+        let arr = data[key];
+        // cards.innerHTML = "";
+
+        let cards = document.getElementById("cards");
+        arr.forEach((ele) => {
+          for (let key in ele) {
+            let card = document.createElement("div");
+            card.className = card;
+
+            card.innerHTML = `
+                          <img src="${ele.image}" alt="" />
+                          <p>${ele.name}</p>
+                          <p>${ele.species}</p>
+                          <h3>${ele.status}</h3>
+                          <h4>location</h4>
+                      `;
+          }
+          cards.appendchild(card);
+        });
+        // console.log(arr);
+      }
+    }
+  }
+  check();
+</script>
