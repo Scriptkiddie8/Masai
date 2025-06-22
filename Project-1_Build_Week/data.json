@@ -1,0 +1,30 @@
+{
+    "web": {
+        "background_image": [
+            "https://images.unsplash.com/photo-1749731630653-d9b3f00573ed?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://media.istockphoto.com/id/497038029/photo/travel.jpg?s=2048x2048&w=is&k=20&c=tOpMLKHYjJcThDOCnjbWZpAxO4zsUQQD58JWTBm61Dk=",
+            "https://plus.unsplash.com/premium_photo-1677002240252-af3f88114efc?q=80&w=2025&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://images.unsplash.com/photo-1601024445121-e5b82f020549?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+            "https://media.istockphoto.com/id/1321956440/photo/breathtaking-view-of-maldives-tropical-beach-during-sunrise.jpg?s=2048x2048&w=is&k=20&c=m5ZMz5c5hnDEdiXafCB_Ra10rdkPk5OGLhOLIXssJto="
+        ],
+        "discount": 25,
+        "trending_places": [
+            {
+                "image": "https://images.unsplash.com/photo-1541336032412-2048a678540d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "city": "New York"
+            },
+            {
+                "image": "https://images.unsplash.com/photo-1551918120-9739cb430c6d?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "city": "Maldives"
+            },
+            {
+                "image": "https://images.unsplash.com/photo-1587048207283-5fcf51d1fb9b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "city": "Singapore"
+            },
+            {
+                "image": "https://images.unsplash.com/photo-1597933534024-debb6104af15?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+                "city": "Chicago"
+            }
+        ]
+    }
+}

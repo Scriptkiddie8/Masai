@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="navbar">
+        <div class="logo-section">
+          <img src="Logo.png" alt="Logo" />
+          <h1>TRAVELING</h1>
+        </div>
+        <div class="auth-buttons">
+          <button class="btn">Login</button>
+          <button class="btn btn-outline">Register</button>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div id="main-container">
+        <div id="inside-main">
+          <h1 id="text-inside-main">Travel Around The World</h1>
+          <img src="world-icon.png!bw700" alt="" id="world-img" />
+        </div>
+      </div>
+    </main>
+    <section>
+      <div class="card-container">
+        <!-- Search Card -->
+        <div class="card search-card">
+          <h3>Go Beyond Your Typical Stay</h3>
+          <div class="search-box">
+            <input
+              type="text"
+              placeholder="Travel from California to Perth.."
+            />
+            <button class="search-btn"><i class="bx bx-search"></i></button>
+          </div>
+        </div>
+
+        <!-- Discount Card -->
+        <div class="card discount-card">
+          <div class="card-header">
+            <h3 id="discount-text"></h3>
+            <button class="arrow-btn">
+              <i class="bx bx-right-arrow-alt"></i>
+            </button>
+          </div>
+          <img
+            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e"
+            alt="Beach Resort"
+          />
+        </div>
+
+        <!-- Testimonials Card -->
+        <div class="card testimonial-card">
+          <div class="avatars">
+            <img src="https://randomuser.me/api/portraits/women/1.jpg" />
+            <img src="https://randomuser.me/api/portraits/women/2.jpg" />
+            <img src="https://randomuser.me/api/portraits/men/1.jpg" />
+            <img src="https://randomuser.me/api/portraits/men/2.jpg" />
+          </div>
+          <div class="stars">★ ★ ★ ★ ★</div>
+          <p>100K+ Users Travelled</p>
+        </div>
+      </div>
+    </section>
+    <section>
+      <div id="trending">
+        <h1>Trending</h1>
+        <img src="images.png" alt="" />
+        <h1>Places</h1>
+      </div>
+    </section>
+    <section>
+      <div id="trending-img"></div>
+    </section>
+  </body>
+</html>
+<script>
+  let firebaseURL =
+    "https://traveling-agency-de6ca-default-rtdb.asia-southeast1.firebasedatabase.app/";
+
+  async function fetchData() {
+    try {
+      let res = await fetch(`${firebaseURL}.json`);
+      let data = await res.json();
+
+      console.log(data);
+      if (!data) return [];
+
+      let container = document.getElementById("main-container");
+      let discount = document.getElementById("discount-text");
+      let trending = document.getElementById("trending-img");
+
+      // Pick one random image from the array
+      let images = data.web.background_image;
+      let randomIndex = Math.floor(Math.random() * images.length);
+      let randomImageURL = images[randomIndex];
+
+      container.style.backgroundImage = `url('${randomImageURL}')`;
+      let dis = data.web.discount;
+      discount.innerText = `Get ${dis}% Discount`;
+
+      //trending places
+      let places = data.web.trending_places;
+      places.forEach((place) => {
+        let trend = document.createElement("div");
+        trend.className = "trending-places";
+        trend.style.width = "22vw";
+        trend.style.height = "60vh";
+        trend.style.backgroundImage = `url(${place.image})`;
+
+        let cityOverlay = document.createElement("div");
+        cityOverlay.innerText = place.city;
+        cityOverlay.className = "cityname";
+        trend.appendChild(cityOverlay);
+        trending.appendChild(trend);
+      });
+    } catch {
+      console.log("Error Occured ");
+    }
+  }
+  fetchData();
+</script>
