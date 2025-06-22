@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    #content {
+      height: auto;
+      width: 95vw;
+      /* border: 1px solid black; */
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      padding: 10px;
+    }
+
+    .innerdiv {
+      border: 0.5px solid black;
+      height: 50vh;
+      width: 20vw;
+      padding: 10px;
+      margin: 0 auto;
+    }
+
+    .innerdiv:hover {
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+      border: 0.5px solid grey;
+    }
+
+    .imgdiv {
+      height: 25vh;
+      width: 18vw;
+      /* border: 1px solid red; */
+      margin: 0 auto;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .textdiv {
+      /* display: flex;
+      flex-direction: column;
+      justify-content: center; */
+      text-align: center;
+    }
+  </style>
+  <body>
+    <h1 style="text-align: center">
+      <b>Fetching Products from FakeStoreApi </b>
+    </h1>
+    <div id="content"></div>
+  </body>
+</html>
+<script>
+  let fetchAPI = "https://fakestoreapi.com/products";
+  async function displayProduct() {
+    try {
+      let res = await fetch(`${fetchAPI}`);
+      let data = await res.json();
+      console.log(data);
+
+      let content = document.getElementById("content");
+
+      //This is 'data' is our main array, so we iterate over it
+      data.forEach((pro) => {
+        //create innerdiv for holding data of every single product individualy
+        let innerdiv = document.createElement("div");
+        innerdiv.className = "innerdiv";
+
+        //create separate div for holding image
+        let imgdiv = document.createElement("div");
+        imgdiv.className = "imgdiv";
+        imgdiv.style.backgroundImage = `url(${pro.image})`;
+
+        //created separate div for holding text or the buttons
+        let textdiv = document.createElement("div");
+        textdiv.className = "textdiv";
+        textdiv.innerHTML = `<p><b>Title: ${pro.title}</b></p>
+        <p><b>price: $${pro.price}</b></p>
+        <button>view Details</button>`;
+
+        // appended them accordingly
+        innerdiv.append(imgdiv, textdiv);
+        content.appendChild(innerdiv);
+      });
+    } catch (error) {
+      alert("You are trying to fetch an incorrect URL");
+    }
+  }
+
+  displayProduct();
+</script>
