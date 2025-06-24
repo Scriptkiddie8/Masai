@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>LocalStorage List App</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        padding: 30px;
+      }
+
+      li {
+        margin: 5px auto;
+        padding: 10px;
+        width: 300px;
+        text-align: left;
+      }
+
+      #clearBtn {
+        margin-top: 20px;
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>My List</h2>
+
+    <input type="text" id="itemInput" placeholder="Add a new item..." />
+    <button onclick="addItem()">Add</button>
+
+    <ul id="itemList"></ul>
+
+    <button id="clearBtn" onclick="clearAll()">Clear All</button>
+  </body>
+</html>
+<script>
+  let input = document.getElementById("itemInput");
+  let list = document.getElementById("itemList");
+
+  let items = JSON.parse(localStorage.getItem("myList")) || [];
+  renderList();
+
+  function addItem() {
+    let value = input.value.trim();
+    if (value) {
+      items.push(value);
+      updateStorage();
+      renderList();
+      input.value = "";
+    }
+  }
+
+  function renderList() {
+    list.innerHTML = "";
+
+    if (items.length === 0) {
+      const li = document.createElement("li");
+      li.textContent = "No items added yet.";
+      li.style.fontStyle = "italic";
+      list.appendChild(li);
+      return;
+    }
+
+    items.forEach((item, index) => {
+      const li = document.createElement("li");
+      li.textContent = item;
+      list.appendChild(li);
+    });
+  }
+
+  function updateStorage() {
+    localStorage.setItem("myList", JSON.stringify(items));
+  }
+
+  function clearAll() {
+    items = [];
+    updateStorage();
+    renderList();
+  }
+</script>
