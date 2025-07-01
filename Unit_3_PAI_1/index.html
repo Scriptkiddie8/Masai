@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      margin: 0 auto;
+      display: flex;
+      justify-items: center;
+      flex-direction: column;
+      align-items: center;
+    }
+    #selecttag {
+      width: 10vw;
+      padding: 5px 10px;
+      margin: 30px;
+    }
+  </style>
+  <body>
+    <h1>Select Your Role:</h1>
+    <select id="selecttag">
+      <option value="agent">Agent</option>
+      <option value="lead">Lead</option>
+    </select>
+    <button id="submit-btn" onclick="submit_locally()">Submit</button>
+  </body>
+</html>
+
+<script>
+  function submit_locally() {
+    let input = document.getElementById("selecttag").value;
+    let role = JSON.parse(localStorage.getItem("role")) || [];
+    role.push(input);
+    localStorage.setItem("role", JSON.stringify(role));
+
+    let submit_btn = document.getElementById("submit-btn");
+    if (input === "agent") {
+      submit_btn.innerHTML = `<a href="form.html">Submit</a>`;
+    } else {
+      submit_btn.innerHTML = `<a href="record.html">Submit</a>`;
+    }
+  }
+</script>

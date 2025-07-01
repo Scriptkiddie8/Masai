@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+    h1 {
+      text-align: center;
+    }
+
+    div {
+      width: 50vw;
+      display: flex;
+      justify-content: center;
+      justify-content: space-between;
+    }
+  </style>
+  <body>
+    <h1>Performance Dashboard:</h1>
+
+    <div>
+      <select id="nps">
+        <option value="">NPS</option>
+        <option value="asc">Asc</option>
+        <option value="desc">Desc</option>
+      </select>
+      <select id="department">
+        <option value="">Department</option>
+        <option value="Saas">Saas</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Consulting">Consulting</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <input type="text" id="company" placeholder="Company Name" />
+      <input type="text" id="agent" placeholder="Agent Name" />
+
+      <button id="filter_btn" onclick="filterData()">Apply Filter</button>
+    </div>
+
+    <div id="record"></div>
+  </body>
+</html>
+<script>
+  async function fetchData() {
+    let res = await fetch(
+      "https://real-time-sales-feedback-default-rtdb.asia-southeast1.firebasedatabase.app/feedback.json"
+    );
+    let data = await res.json();
+    if (!data) return [];
+
+    return Object.entries(data).map(([id, feedback]) => ({
+      id,
+      ...feedback,
+    }));
+  }
+
+  async function filterData() {
+    let feedback = await fetchData();
+    let nps = document.getElementById("nps").value;
+    let department = document.getElementById("department").value;
+    let company = document.getElementById("company").value;
+    let agent = document.getElementById("agent").value;
+
+    let filteredRecord = feedback.filter((feed) => {
+      return (
+        (department == "" || feed.department === "department") &&
+        (company == "" || feed.company === "company") &&
+        (agent == "" || feed.agent === "agent")
+      );
+    });
+
+    filteredRecord.sort((a, b) => {
+      if (nps === "asc") {
+        return a.nps - b.nps;
+      } else {
+        return b.nps - a.nps;
+      }
+    });
+
+    displayData(filteredRecord);
+  }
+
+  async function displayData(filteredRecord) {
+    let record = document.getElementById("record");
+    record.innerHTML = "";
+    // console.log(filteredRecord);
+    let table = document.createElement("table");
+    table.innerHTML = `
+            <thead>
+                <tr>
+                </tr>
+            </thead>
+    `;
+    Object.keys(filteredRecord[0]).forEach((key) => {
+      let td = document.createElement("td");
+      td.innerHTML = `${key}`;
+      table.appendChild(td);
+    });
+
+    filteredRecord.forEach((data) => {
+      let tbody = document.createElement("tbody");
+      tbody.innerHTML = `
+            <tr>
+                <td>${data.id}</td>
+                <td>${data.agent}</td>
+                <td>${data.comment}</td>
+                <td>${data.company}</td>
+                <td>${data.department}</td>
+                <td>${data.nps}</td>
+                <td>${data.score}</td>
+                </tr>`;
+      table.appendChild(tbody);
+    });
+    record.appendChild(table);
+  }
+</script>

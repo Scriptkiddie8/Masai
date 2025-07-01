@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      /* display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column; */
+      margin: 0 auto;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    div {
+      height: 50vh;
+      width: 30vw;
+      display: flex;
+      /* justify-content: center; */
+      align-items: center;
+      flex-direction: column;
+    }
+    input,
+    select,
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+
+    select,
+    button {
+      width: 13.5vw;
+    }
+    #comments {
+      height: 10vh;
+    }
+  </style>
+  <body>
+    <div>
+      <h1>Agent Form :</h1>
+      <input id="name" type="text" placeholder="Name" required />
+      <input id="company" type="text" placeholder="Company Name" required />
+      <select id="department">
+        <option value="">Department</option>
+        <option value="Saas">Saas</option>
+        <option value="Hardware">Hardware</option>
+        <option value="Consulting">Consulting</option>
+        <option value="Other">Other</option>
+      </select>
+      <select id="score" required>
+        <option value="">Satisfaction Score</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input id="npm" type="text" placeholder="NPM( -100 to 100 )" />
+      <input id="comments" type="message" placeholder="Comments" />
+      <button onclick="sendData()">Submit</button>
+    </div>
+  </body>
+</html>
+<script>
+  async function sendData() {
+    let feedback = {
+      agent: document.getElementById("name").value,
+      company: document.getElementById("company").value,
+      department: document.getElementById("department").value,
+      score: document.getElementById("score").value,
+      nps: document.getElementById("npm").value,
+      comment: document.getElementById("comments").value,
+    };
+
+    let res = await fetch(
+      "https://real-time-sales-feedback-default-rtdb.asia-southeast1.firebasedatabase.app/feedback.json",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(feedback),
+      }
+    );
+
+    document.getElementById("name").value = "";
+    document.getElementById("company").value = "";
+    document.getElementById("department").value = "";
+    document.getElementById("score").value = "";
+    document.getElementById("npm").value = "";
+    document.getElementById("comments").value = "";
+  }
+</script>
