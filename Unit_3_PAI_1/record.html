@@ -22,6 +22,10 @@
       justify-content: center;
       justify-content: space-between;
     }
+
+    #record {
+      margin-top: 20px;
+    }
   </style>
   <body>
     <h1>Performance Dashboard:</h1>
@@ -72,9 +76,9 @@
 
     let filteredRecord = feedback.filter((feed) => {
       return (
-        (department == "" || feed.department === "department") &&
-        (company == "" || feed.company === "company") &&
-        (agent == "" || feed.agent === "agent")
+        (department == "" || feed.department === department) &&
+        (company == "" || feed.company === company) &&
+        (agent == "" || feed.agent === agent)
       );
     });
 
