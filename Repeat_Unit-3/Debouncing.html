@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    input {
+      padding: 10px;
+    }
+  </style>
+  <body>
+    <input id="inputfield" type="text" placeholder="Call API" />
+  </body>
+</html>
+<script>
+  let timer;
+  document
+    .getElementById("inputfield")
+    .addEventListener("input", function (event) {
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        searchFunctionality(event.target.value);
+      }, 5000);
+    });
+
+  function searchFunctionality(query) {
+    console.log("Calling an API: ", query);
+  }
+</script>

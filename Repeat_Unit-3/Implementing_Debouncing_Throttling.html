@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input id="input_field" type="text" placeholder="Search Movie" />
+  </body>
+</html>
+
+<script>
+  async function fetchData() {
+    let res = await fetch(
+      "https://www.omdbapi.com/?apikey=61ee81ae&s=SEARCH_QUERY"
+    );
+    let data = await res.json();
+    console.table(data);
+  }
+  fetchData();
+</script>
