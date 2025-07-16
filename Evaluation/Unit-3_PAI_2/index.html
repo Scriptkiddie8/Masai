@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=shopping_cart_checkout"
+    />
+  </head>
+
+  <style>
+    body {
+      height: 90vh;
+      width: 90vw;
+      background-color: #113f67;
+    }
+    #cart > a {
+      height: 20vh;
+      width: 90vw;
+      display: flex;
+      justify-content: end;
+      margin-top: 10px;
+      padding: 20px;
+      color: #fdf5aa;
+    }
+
+    #main {
+      height: 50vh;
+      width: 90vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #form {
+      height: 50vh;
+      width: 40vw;
+      background-color: #34699a;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    input,
+    select,
+    button,
+    p {
+      padding: 5px 20px;
+    }
+
+    button {
+      background-color: #58a0c8;
+    }
+    p {
+      color: #11da33;
+    }
+  </style>
+
+  <body>
+    <div id="cart">
+      <a href="showCart.html"
+        ><span class="material-symbols-outlined">
+          shopping_cart_checkout
+        </span></a
+      >
+    </div>
+    <div id="main">
+      <div id="form">
+        <input type="text" id="name" placeholder="Item Name" /><br />
+        <input type="text" id="qty" placeholder="Qty" /><br />
+        <input type="text" id="price" placeholder="Price" /><br />
+        <select name="" id="category">
+          <option value="">--Category--</option>
+          <option value="dairy">Dairy</option>
+          <option value="produce">Produce</option>
+          <option value="snack">Snack</option></select
+        ><br />
+        <button onclick="addItems()">Submit</button>
+        <p id="msg"></p>
+      </div>
+    </div>
+  </body>
+</html>
+
+<script>
+  async function addItems() {
+    let cart = {
+      name: document.getElementById("name").value,
+      qty: document.getElementById("qty").value,
+      price: document.getElementById("price").value,
+      category: document.getElementById("category").value,
+    };
+
+    let res = await fetch(
+      "https://shoppingcart-beb4e-default-rtdb.asia-southeast1.firebasedatabase.app/cart.json",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(cart),
+      }
+    );
+
+    document.getElementById("name").value = "";
+    document.getElementById("qty").value = "";
+    document.getElementById("price").value = "";
+    document.getElementById("category").value = "";
+
+    document.getElementById("msg").innerText = `Item Added Successfully!`;
+  }
+
+  function showCart() {}
+</script>
