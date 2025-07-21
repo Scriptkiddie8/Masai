@@ -11,6 +11,42 @@
     />
   </head>
   <body>
+    <div class="travel-cart" id="travelCart">
+      <div class="cart-header">
+        <h2>🧳 Plan Your Trip</h2>
+        <span class="close-btn" id="closeCartBtn">✖</span>
+      </div>
+      <div class="cart-content">
+        <form id="tripForm">
+          <label>🌍 Where do you want to go?</label>
+          <input type="text" placeholder="e.g. Paris, Bali, Tokyo" required />
+
+          <label>📅 When are you planning to travel?</label>
+          <input type="date" required />
+
+          <label>👨‍👩‍👧‍👦 Who's traveling?</label>
+          <select>
+            <option>Solo</option>
+            <option>Couple</option>
+            <option>Family</option>
+            <option>Friends</option>
+          </select>
+          <label>👨‍👩‍👧 Preference?</label>
+          <select>
+            <option>Adventure</option>
+            <option>Relaxation</option>
+            <option>History</option>
+            <option>Spiritual</option>
+          </select>
+
+          <label>💰 What's your approximate budget?</label>
+          <input type="number" placeholder="e.g. 50000" min="5000" required />
+
+          <button type="submit">Get Recommendations ✨</button>
+        </form>
+      </div>
+    </div>
+
     <header>
       <div class="navbar">
         <div class="logo-section">
@@ -18,8 +54,8 @@
           <h1>TRAVELING</h1>
         </div>
         <div class="auth-buttons">
-          <button class="btn">Login</button>
-          <button class="btn btn-outline">Register</button>
+          <button class="btn" id="login-signup">Login/Register</button>
+          <!-- <button class="btn btn-outline">Register</button> -->
         </div>
       </div>
     </header>
@@ -72,6 +108,12 @@
         </div>
       </div>
     </section>
+    <div id="authPopup" class="modal-wrapper">
+      <div class="modal-box">
+        <span class="modal-close" onclick="closePopup()">✖</span>
+        <iframe src="Signup.html" id="signupIframe"></iframe>
+      </div>
+    </div>
     <section>
       <div id="trending">
         <h1>Trending</h1>
@@ -84,7 +126,30 @@
     </section>
   </body>
 </html>
-<script>
+<!-- Firebase SDKs (add at end of body in index.html) -->
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
+  import {
+    getAuth,
+    signOut,
+  } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAj8RLoUppNcmStrE40UYd7HTfGtr0gg6c",
+    authDomain: "traveling-agency-de6ca.firebaseapp.com",
+    databaseURL:
+      "https://traveling-agency-de6ca-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "traveling-agency-de6ca",
+    storageBucket: "traveling-agency-de6ca.appspot.com",
+    messagingSenderId: "613059044293",
+    appId: "1:613059044293:web:beb92d45e37a0a04c421ac",
+    measurementId: "G-20E2QCL82Y",
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+
   let firebaseURL =
     "https://traveling-agency-de6ca-default-rtdb.asia-southeast1.firebasedatabase.app/";
 
@@ -128,5 +193,101 @@
       console.log("Error Occured ");
     }
   }
+
+  document.getElementById("closeCartBtn").addEventListener("click", closeCart);
+
+  function closeCart() {
+    document.getElementById("travelCart").classList.remove("active");
+  }
+
+  // For getting the popup appear when clicked on login
+  document.getElementById("login-signup").addEventListener("click", () => {
+    document.getElementById("authPopup").style.display = "flex";
+    document.getElementById("blur-container").classList.add("modal-blur");
+  });
+
+  function closePopup() {
+    document.getElementById("authPopup").style.display = "none";
+    document.getElementById("blur-container").classList.remove("modal-blur");
+    document.getElementById("signupIframe").style.display = "none";
+  }
+
+  // Handle login message from iframe
+  window.addEventListener("message", function (event) {
+    if (event.data && event.data.status === "loggedIn") {
+      // Hide login/register buttons
+      document.querySelector(".auth-buttons").style.display = "none";
+
+      // Create profile dropdown
+      const navbar = document.querySelector(".navbar");
+
+      const profileWrapper = document.createElement("div");
+      profileWrapper.className = "profile-wrapper";
+
+      const email = event.data.email; // e.g. "kartik.garg99@gmail.com"
+      const name = email.split("@")[0]; // "kartik.garg99"
+
+      profileWrapper.innerHTML = `
+      <div class="profile" id="profileToggle">
+        <div class="info">
+          <p>Hey, <b>${name}</b></p>
+          <small class="text-muted">Admin</small>
+        </div>
+        <div class="profile-photo">
+          <img src="Logo.png" alt="">
+        </div>
+      </div>
+      <div class="dropdown" id="profileDropdown" style="display: none;">
+        <button id="logoutBtn">Logout</button>
+      </div>
+      `;
+
+      navbar.appendChild(profileWrapper);
+
+      // Close modal popup
+      document.getElementById("authPopup").style.display = "none";
+      document.getElementById("signupIframe").style.display = "none";
+
+      setTimeout(() => {
+        document.getElementById("travelCart").classList.add("active");
+      }, 10000);
+
+      // Toggle dropdown on profile click
+      const profileToggle = document.getElementById("profileToggle");
+      const profileDropdown = document.getElementById("profileDropdown");
+
+      profileToggle.addEventListener("click", () => {
+        profileDropdown.style.display =
+          profileDropdown.style.display === "none" ? "block" : "none";
+      });
+
+      document.addEventListener("click", function (event) {
+        const dropdown = document.getElementById("profileDropdown");
+        const toggle = document.getElementById("profileToggle");
+
+        if (!dropdown || !toggle) return;
+
+        // If the click is NOT inside toggle or dropdown, close it
+        if (
+          !toggle.contains(event.target) &&
+          !dropdown.contains(event.target)
+        ) {
+          dropdown.style.display = "none";
+        }
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        signOut(auth)
+          .then(() => {
+            location.reload();
+          })
+          .catch((error) => {
+            alert("Error during logout: " + error.message);
+          });
+      });
+    }
+  });
+
+  // /---------------/
   fetchData();
 </script>
