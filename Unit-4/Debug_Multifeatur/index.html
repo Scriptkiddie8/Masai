@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+</html>
+<script>
+  // Empty Task Bug Fixed: Now only non-empty tasks are added using input.trim().
+
+  // Completion Visual Added: Completed tasks show strike-through using textDecoration.
+
+  // Correct Deletion Ensured: Fixed deleteTask() to remove the exact task using i !== index.
+
+  import React, { useState } from "react";
+
+  function TodoList() {
+    const [tasks, setTasks] = useState([]);
+    const [input, setInput] = useState("");
+
+    const addTask = () => {
+      if (input.trim() === "") return; // Prevent empty task
+      setTasks([...tasks, { text: input.trim(), completed: false }]);
+      setInput("");
+    };
+
+    const toggleComplete = (index) => {
+      const newTasks = [...tasks];
+      newTasks[index].completed = !newTasks[index].completed;
+      setTasks(newTasks);
+    };
+
+    const deleteTask = (index) => {
+      const newTasks = tasks.filter((_, i) => i !== index); // Correct deletion
+      setTasks(newTasks);
+    };
+
+    return (
+      <div>
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add new task"
+        />
+        <button onClick={addTask}>Add Task</button>
+        <ul>
+          {tasks.map((task, i) => (
+            <li key={i}>
+              <span
+                onClick={() => toggleComplete(i)}
+                style={{
+                  textDecoration: task.completed ? "line-through" : "none",
+                  cursor: "pointer",
+                }}
+              >
+                {task.text}
+              </span>
+              <button onClick={() => deleteTask(i)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
+
+  export default TodoList;
+</script>
