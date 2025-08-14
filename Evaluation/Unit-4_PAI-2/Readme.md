@@ -1,4 +1,5 @@
 Project: ConnectSphere - A User & Post Dashboard
+Unit-4
 
 1. Project Vision
    Create "ConnectSphere," a clean, modern, and responsive single-page application where you can browse a directory of users, view their profiles, and read their blog posts. The application will be built entirely with React, using a modern toolchain, and will interact with the public JSONPlaceholder API to fetch its data. This project will test your foundational knowledge of React, from building components and managing state to handling side effects and implementing client-side navigation.
