@@ -7,7 +7,6 @@ const UserDetail = ()=>{
 
     const {userId} = useParams();
     const [user, setUser] = useState([]);
-    const [posts, setPosts] = useState([]);
 
 
     useEffect(()=>{
@@ -18,12 +17,6 @@ const UserDetail = ()=>{
         }
         fetchData();
 
-        async function postData(){
-            let res = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
-            let data = await res.json();
-            setPosts(data);
-        }
-        postData();
 
   },[userId])
 
@@ -36,15 +29,6 @@ const UserDetail = ()=>{
         <p>Company: {user.company.name}</p>
         <p>Website: {user.website}</p>
         <p>Address: {user.address.street}</p>
-
-        <h3>Blog Posts:</h3>
-        {posts.map((post) =>(
-            <div>
-                <h4>{post.title}</h4>
-                <p>{post.body}</p>
-            </div>
-        ))}
-
     </div>
     )
 }
