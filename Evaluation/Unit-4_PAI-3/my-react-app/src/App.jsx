@@ -6,6 +6,7 @@ import SearchBar from "./components/SearchBar";
 import RepoCard from "./components/RepoCard";
 import { Loader, SunMoon } from "lucide-react";
 import { ThemeContext } from "./ThemeContext";
+import axios from "axios";
 
 function App() {
   const [username, setUsername] = useState("");
