@@ -40,7 +40,7 @@ function App() {
   }, [username]);
 
   return (
-    <div>
+    <div className={theme}>
       <button onClick={toggleTheme}>
         <SunMoon />
       </button>
