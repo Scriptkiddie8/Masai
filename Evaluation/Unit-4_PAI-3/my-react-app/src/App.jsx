@@ -14,7 +14,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { theme, togglebtn } = useContext(ThemeContext);
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   useEffect(() => {
     if (!username) return;
@@ -39,7 +39,7 @@ function App() {
 
   return (
     <div>
-      <button onClick={togglebtn}>
+      <button onClick={toggleTheme}>
         <SunMoon />
       </button>
 
