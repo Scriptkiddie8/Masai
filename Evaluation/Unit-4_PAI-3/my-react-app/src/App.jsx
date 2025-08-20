@@ -1,3 +1,4 @@
+import React from "react";
 import { useContext, useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
@@ -28,6 +29,7 @@ function App() {
         );
         setRepos(res.data);
       } catch (error) {
+        console.log(error.message);
         setError("User not Found");
         setRepos([]);
       } finally {
@@ -55,8 +57,8 @@ function App() {
               key={repo.id}
               name={repo.name}
               description={repo.description}
-              stars={repo.stars}
-              forks={repo.forks}
+              stars={repo.stargazers_count}
+              forks={repo.forks_count}
             />
           ))}
       </div>
