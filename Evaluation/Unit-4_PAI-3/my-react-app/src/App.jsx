@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useContext, useEffect, useState } from "react";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "/vite.svg";
+import "./App.css";
+import SearchBar from "./components/SearchBar";
+import RepoCard from "./components/RepoCard";
+import { Loader, SunMoon } from "lucide-react";
+import { ThemeContext } from "./ThemeContext";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [username, setUsername] = useState("");
+  const [repos, setRepos] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  const { theme, togglebtn } = useContext(ThemeContext);
+
+  useEffect(() => {
+    if (!username) return;
+
+    async function fetchData() {
+      setLoading(true);
+      setError("");
+      try {
+        const res = await axios.get(
+          `https://api.github.com/users/${username}/repos`
+        );
+        setRepos(res.data);
+      } catch (error) {
+        setError("User not Found");
+        setRepos([]);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
+  }, [username]);
 
   return (
-    <>
+    <div>
+      <button onClick={togglebtn}>
+        <SunMoon />
+      </button>
+
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <SearchBar onSearch={setUsername} />
+
+        {loading && <Loader />}
+        {error && <p style={{ color: "red" }}>{error}</p>}
+        {!loading &&
+          !error &&
+          repos.map((repo) => (
+            <RepoCard
+              key={repo.id}
+              name={repo.name}
+              description={repo.description}
+              stars={repo.stars}
+              forks={repo.forks}
+            />
+          ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;
