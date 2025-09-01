@@ -1,0 +1,31 @@
+{
+  "dishes": [
+    {
+      "id": 1,
+      "name": "Pasta",
+      "price": 200,
+      "category": "Lunch"
+    },
+    {
+      "id": 2,
+      "name": "Pizza",
+      "price": 300,
+      "category": "Dinner"
+    },
+    {
+      "id": 3,
+      "name": "Burger",
+      "price": 150,
+      "category": "Snacks"
+    },
+    {
+      "id": 1756727715464
+    },
+    {
+      "id": 1756727739199
+    },
+    {
+      "id": 1756727742148
+    }
+  ]
+}
