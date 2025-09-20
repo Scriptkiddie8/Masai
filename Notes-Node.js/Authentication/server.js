@@ -24,6 +24,9 @@ app.use("/users", UserRouter);
 //todoRouter
 app.use("/todos", TodoRouter);
 
+app.get("/login", (req, res) => {
+  res.send("Please Login Again...");
+});
 //Handling undefined routes
 app.use((req, res) => {
   try {

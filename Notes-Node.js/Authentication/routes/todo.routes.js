@@ -4,7 +4,7 @@ const authMiddleware = require("../middlewares/auth.middleware");
 
 const TodoRouter = express.Router();
 
-TodoRouter.post("/add-todo", authMiddleware, async (req, res) => {
+TodoRouter.post("/add-todo", authMiddleware("user"), async (req, res) => {
   //title & status are coming from req.body
   //This route is protected route
   //Only Authenticated or loggedin users are allowed
