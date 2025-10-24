@@ -1,0 +1,27 @@
+[
+  {
+    "title": "VS Code",
+    "imageSrc": "tools/vscode.svg",
+    "dataSkill": "vscode"
+  },
+  {
+    "title": "Git",
+    "imageSrc": "tools/git.svg",
+    "dataSkill": "git"
+  },
+  {
+    "title": "GitHub",
+    "imageSrc": "tools/github3.svg",
+    "dataSkill": "github"
+  },
+  {
+    "title": "Postman",
+    "imageSrc": "tools/postman.svg",
+    "dataSkill": "postman"
+  },
+  {
+    "title": "Vite",
+    "imageSrc": "tools/vite.svg",
+    "dataSkill": "vite"
+  }
+]

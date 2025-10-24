@@ -1,0 +1,42 @@
+[
+  {
+    "title": "HTML",
+    "imageSrc": "skills/html.png",
+    "dataSkill": "html"
+  },
+  {
+    "title": "CSS",
+    "imageSrc": "skills/css.png",
+    "dataSkill": "css"
+  },
+  {
+    "title": "JavaScript",
+    "imageSrc": "skills/js.png",
+    "dataSkill": "javascript"
+  },
+  {
+    "title": "React.js",
+    "imageSrc": "skills/react.png",
+    "dataSkill": "react"
+  },
+  {
+    "title": "Node.js",
+    "imageSrc": "skills/node.png",
+    "dataSkill": "node"
+  },
+  {
+    "title": "Express.js",
+    "imageSrc": "skills/express.png",
+    "dataSkill": "express"
+  },
+  {
+    "title": "MongoDB",
+    "imageSrc": "skills/mongodb.png",
+    "dataSkill": "mongodb"
+  },
+  {
+    "title": "Tailwind CSS",
+    "imageSrc": "skills/tailwind.png",
+    "dataSkill": "tailwind"
+  }
+]
