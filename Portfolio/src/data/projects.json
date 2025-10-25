@@ -1,32 +1,40 @@
 [
   {
-    "title": "Tech Update",
+    "title": "Customer-Relationship-Management(CRM)",
     "imageSrc": "projects/techUpdate.png",
-    "description": "An interactive and responsive blogging platform where logged-in users can create, update, and manage posts, while unregistered users can only view existing content. Designed with a clean UI to ensure seamless content browsing and management.",
-    "skills": ["React", "Firebase", "Tailwind CSS"],
-    "demo": "https://tech-update-blog.vercel.app/",
-    "source": "https://github.com/Sk-Sakirul/Tech-Update-Blog.git"
+    "description": "A full-featured Customer Relationship Management platform designed to streamline client interactions, sales tracking, and task management. It includes role-based access, real-time analytics, automated follow-ups, and an intuitive dashboard for managing leads and customer data efficiently. Built with a modern tech stack ensuring scalability, performance, and a smooth user experience.",
+    "skills": [
+      "PHP",
+      "JavaScript",
+      "MySQL"
+    ],
+    "demo": "https://arisen.in/crm",
+    "source": "https://github.com/Scriptkiddie8/Customer-Relationship-Management-CRM-"
   },
   {
-    "title": "Virtual Classroom",
-    "imageSrc": "projects/virtualClassroom.png",
-    "description": "A modern virtual classroom platform built with React, Redux, and Firebase. It includes video conferencing, interactive whiteboard, real-time chat, file sharing, and teacher-specific participation tracking for seamless online learning.",
+    "title": "QuizQuest",
+    "imageSrc": "projects/QuizQuest.png",
+    "description": "An interactive quiz application that challenges users with dynamic questions across multiple categories and difficulty levels. It features real-time scoring, progress tracking, and a responsive UI for an engaging experience. Built with a modern tech stack to ensure smooth performance, scalability, and an intuitive user interface.",
     "skills": [
       "React",
-      "Redux",
-      "Firebase",
-      "Tailwind CSS",
       "JavaScript",
-      "Firestore"
+      "Vite",
+      "Tailwind CSS",
+      "Redux"
     ],
-    "demo": "https://virtual-classroom-sable.vercel.app/",
-    "source": "https://github.com/Sk-Sakirul/virtual-classroom.git"
+    "demo": "https://quiz-quest-k7m9.vercel.app/",
+    "source": "https://github.com/Scriptkiddie8/QuizQuest"
   },
   {
     "title": "Image Search Engine",
     "imageSrc": "projects/imageSearch.png",
     "description": "A responsive image search engine built with HTML, CSS, and JavaScript. It fetches images from the Unsplash API based on user input and displays them in a grid layout with a 'Show More' option for pagination.",
-    "skills": ["HTML", "CSS", "JavaScript", "Unsplash API"],
+    "skills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Unsplash API"
+    ],
     "demo": "https://sk-sakirul.github.io/Image-Search-Engine/",
     "source": "https://github.com/Sk-Sakirul/Image-Search-Engine.git"
   },
@@ -34,7 +42,10 @@
     "title": "Dice Game",
     "imageSrc": "projects/diceGame.png",
     "description": "The Dice Game is a simple and fun number guessing game built to test your luck.",
-    "skills": ["React", "CSS3"],
+    "skills": [
+      "React",
+      "CSS3"
+    ],
     "demo": "https://dice-game-tau-wheat.vercel.app/",
     "source": "https://github.com/Sk-Sakirul/Dice-Game.git"
   },
@@ -42,9 +53,13 @@
     "title": "GitHub Profile Finder",
     "imageSrc": "projects/searchGithubProfile.png",
     "description": "Built a React application that allows users to search and view GitHub profiles using the GitHub API. Displays profile details, repositories, followers, and following with a clean and responsive UI.",
-    "skills": ["HTML", "JavaScript", "CSS", "GitHub API"],
+    "skills": [
+      "HTML",
+      "JavaScript",
+      "CSS",
+      "GitHub API"
+    ],
     "demo": "https://sk-sakirul.github.io/Search-Github-Profile/",
     "source": "https://github.com/Sk-Sakirul/Image-Search-Engine.git"
   }
 ]
-

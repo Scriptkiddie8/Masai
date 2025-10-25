@@ -38,5 +38,15 @@
     "title": "Tailwind CSS",
     "imageSrc": "skills/tailwind.png",
     "dataSkill": "tailwind"
+  },
+  {
+    "title": "C++",
+    "imageSrc": "skills/cpp.png",
+    "dataSkill": "C++"
+  },
+  {
+    "title": "PHP",
+    "imageSrc": "skills/php.png",
+    "dataSkill": "php"
   }
 ]

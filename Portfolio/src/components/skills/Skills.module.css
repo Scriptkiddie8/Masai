@@ -147,6 +147,14 @@
   border-color: #10b981;
 }
 
+.skillCard[data-skill="C++"] {
+  border-color: #308dde;
+}
+
+.skillCard[data-skill="php"] {
+  border-color: #247fe7;
+}
+
 /* Simplified hover effects with subtle glow */
 .skillCard:hover {
   transform: translateY(-4px);
@@ -193,6 +201,16 @@
   box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
 }
 
+.skillCard[data-skill="C++"]:hover {
+  border-color: #06b6d4;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
+.skillCard[data-skill="php"]:hover {
+  border-color: #06b6d4;
+  box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+}
+
 /* Removed highlighted class styles as we're using data attributes */
 .skillCard.highlighted {
   display: none;
@@ -213,6 +231,15 @@
   justify-content: center;
   transition: all 0.3s ease;
 }
+
+
+.skillIcon img {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  display: block;
+}
+
 
 .skillIcon::after {
   display: none;
