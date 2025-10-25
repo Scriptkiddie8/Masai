@@ -26,17 +26,20 @@
     "source": "https://github.com/Scriptkiddie8/QuizQuest"
   },
   {
-    "title": "Image Search Engine",
-    "imageSrc": "projects/imageSearch.png",
-    "description": "A responsive image search engine built with HTML, CSS, and JavaScript. It fetches images from the Unsplash API based on user input and displays them in a grid layout with a 'Show More' option for pagination.",
+    "title": "MatchMe",
+    "imageSrc": "projects/MatchMe.png",
+    "description": "A full-featured matchmaking platform that connects users based on personalized preferences and AI-driven compatibility scores. It includes profile creation, real-time chat, photo management, premium memberships, and behavior-based matching. With a secure backend, responsive UI, and admin analytics dashboard, MatchMe delivers a modern, scalable, and engaging user experience.",
     "skills": [
-      "HTML",
-      "CSS",
-      "JavaScript",
-      "Unsplash API"
+      "React",
+      "Express",
+      "Nodejs",
+      "MongoDB",
+      "JWT",
+      "bcrypt",
+      "Socket.io"
     ],
-    "demo": "https://sk-sakirul.github.io/Image-Search-Engine/",
-    "source": "https://github.com/Sk-Sakirul/Image-Search-Engine.git"
+    "demo": "https://match-me-drab.vercel.app/",
+    "source": "https://github.com/Scriptkiddie8/MatchMe"
   },
   {
     "title": "Dice Game",
