@@ -3,16 +3,18 @@
 A responsive and modern **React portfolio website** built with **Vite**, **React.js**, and **custom CSS modules**.  
 This website highlights my skills, showcases my projects, provides access to my resume, and includes a contact form powered by **EmailJS**.
 
-🔗 **Live Demo:** [Portfolio Link](https://portfolio-henna-eight-38.vercel.app)
+🔗 **Live Demo:** [Portfolio Link](#)
 
 ---
 
 ## 🚀 Project Type
+
 Frontend Project (React + CSS)
 
 ---
 
 ## ✨ Features
+
 - Responsive layout for desktop, tablet, and mobile
 - Smooth navigation between sections
 - Gradient typography and modern UI styling
@@ -27,6 +29,7 @@ Frontend Project (React + CSS)
 ---
 
 ## 🛠️ Tech Stack
+
 - **React.js** (Frontend)
 - **Vite** (Build tool)
 - **CSS Modules + Custom Styling**
@@ -36,6 +39,7 @@ Frontend Project (React + CSS)
 ---
 
 ## 📂 Repository Structure
+
 ```
 ├── assets
 │   ├── about

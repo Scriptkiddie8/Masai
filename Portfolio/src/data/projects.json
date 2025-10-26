@@ -42,27 +42,15 @@
     "source": "https://github.com/Scriptkiddie8/MatchMe"
   },
   {
-    "title": "Dice Game",
-    "imageSrc": "projects/diceGame.png",
-    "description": "The Dice Game is a simple and fun number guessing game built to test your luck.",
+    "title": "Traveling",
+    "imageSrc": "projects/Traveling.png",
+    "description": "A dynamic travel website that helps users discover destinations, explore trip packages, and plan personalized journeys with ease. It features destination search, image galleries, reviews, and responsive layouts for a seamless browsing experience. Built with modern web technologies to ensure fast performance, elegant design, and an engaging user experience.",
     "skills": [
-      "React",
-      "CSS3"
+      "HTML5",
+      "CSS3",
+      "JavaScript"
     ],
-    "demo": "https://dice-game-tau-wheat.vercel.app/",
-    "source": "https://github.com/Sk-Sakirul/Dice-Game.git"
-  },
-  {
-    "title": "GitHub Profile Finder",
-    "imageSrc": "projects/searchGithubProfile.png",
-    "description": "Built a React application that allows users to search and view GitHub profiles using the GitHub API. Displays profile details, repositories, followers, and following with a clean and responsive UI.",
-    "skills": [
-      "HTML",
-      "JavaScript",
-      "CSS",
-      "GitHub API"
-    ],
-    "demo": "https://sk-sakirul.github.io/Search-Github-Profile/",
-    "source": "https://github.com/Sk-Sakirul/Image-Search-Engine.git"
+    "demo": "https://travelling-web-beta.vercel.app/",
+    "source": "https://github.com/Scriptkiddie8/travelling-web"
   }
 ]
