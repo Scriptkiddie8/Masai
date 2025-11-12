@@ -3,7 +3,7 @@
 A responsive and modern **React portfolio website** built with **Vite**, **React.js**, and **custom CSS modules**.  
 This website highlights my skills, showcases my projects, provides access to my resume, and includes a contact form powered by **EmailJS**.
 
-🔗 **Live Demo:** [Portfolio Link](#)
+🔗 **Live Demo:** [Portfolio Link](https://my-portfolio-snowy-eight-48.vercel.app/)
 
 ---
 

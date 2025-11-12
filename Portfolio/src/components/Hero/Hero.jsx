@@ -45,7 +45,7 @@ export const Hero = () => {
 
       const link = document.createElement("a");
       link.href = url;
-      link.download = "Sakirul-Islam-Resume.pdf";
+      link.download = "Kartik_Garg_Resume.pdf";
       document.body.appendChild(link);
       link.click();
       link.remove();

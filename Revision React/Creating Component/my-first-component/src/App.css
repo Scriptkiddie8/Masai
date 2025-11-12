@@ -1,0 +1,29 @@
+.user-card {
+  border: 2px solid #4f46e5;
+  border-radius: 12px;
+  padding: 16px;
+  width: 250px;
+  text-align: center;
+  margin: 20px auto;
+  background-color: #f3f4f6;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+h2,h3{
+  color: brown;
+}
+
+.user-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
