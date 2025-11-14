@@ -1,0 +1,16 @@
+body[data-theme='light'] {
+  background: white;
+  color: black;
+}
+
+body[data-theme='dark'] {
+  background: #121212;
+  color: white;
+}
+
+.toggle-btn {
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 6px;
+}
