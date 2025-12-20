@@ -1,35 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import universeTab from "./components/UniverseTab";
+import TemporalFreezeSwitch from "./components/TemporalFreezeSwitch";
+import TabBar from "./components/TabBar";
+import "./style.css";
+
+const universe = ["artifacts", "creatures", "logs"];
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const [activeUniverse, setActiveUniverse] = useState(universe[0]);
+  const [freeze, setFreeze] = useState(false);
   return (
     <>
       <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+        <h1>NebulaVault</h1>
+        <TemporalFreezeSwitch freeze={freeze} setFreeze={setFreeze} />
+        <TabBar
+          universe={universe}
+          activeUniverse={activeUniverse}
+          setActiveUniverse={setActiveUniverse}
+        />
+        {universe.map((u) => (
+          <div key={u}>
+            <UniverseTab universe={u} freeze={freeze} />
+          </div>
+        ))}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

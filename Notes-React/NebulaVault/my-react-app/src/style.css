@@ -1,0 +1,15 @@
+.pulse{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-left: 5px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.pulse-active{
+    opacity: 1;
+    
+}
