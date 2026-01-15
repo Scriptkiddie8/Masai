@@ -42,6 +42,25 @@
     "source": "https://github.com/Scriptkiddie8/MatchMe"
   },
   {
+    "title": "Referral Management System",
+    "imageSrc": "projects/ReferralSystem.png",
+    "description": "A full-stack Referral Management System that allows users to submit candidate details with resume uploads and enables admins to manage, review, and track referrals efficiently. Built using the MERN stack, it features secure authentication, cloud-based file storage, and a responsive UI for a smooth end-to-end referral workflow.",
+    "skills": [
+      "React",
+      "JavaScript",
+      "Vite",
+      "Express",
+      "Nodejs",
+      "Clodinary",
+      "JWT",
+      "Mongo Atlas",
+      "Tailwind CSS",
+      "Redux"
+    ],
+    "demo": "https://referral-management-system-1.onrender.com",
+    "source": "https://github.com/Scriptkiddie8/Referral-Management-System"
+  },
+  {
     "title": "Traveling",
     "imageSrc": "projects/Traveling.png",
     "description": "A dynamic travel website that helps users discover destinations, explore trip packages, and plan personalized journeys with ease. It features destination search, image galleries, reviews, and responsive layouts for a seamless browsing experience. Built with modern web technologies to ensure fast performance, elegant design, and an engaging user experience.",
