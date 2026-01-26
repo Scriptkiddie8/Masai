@@ -4,7 +4,10 @@ export default function Timer({ time }) {
 
   return (
     <h3>
-      Session Time Remaining: {min}:{sec}
+      Session Time Remaining:{" "}
+      <b>
+        {min}:{sec}
+      </b>
     </h3>
   );
 }

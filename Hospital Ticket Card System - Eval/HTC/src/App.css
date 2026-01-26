@@ -1,42 +1,115 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* APP CONTAINER */
+body {
+  background-color: #f4f6f8;
+}
+
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  min-height: 100vh;
+}
+
+/* MAIN WRAPPER */
+div {
+  color: #333;
+}
+
+/* HEADINGS */
+h1 {
   text-align: center;
+  margin-bottom: 20px;
+  color: #1e3a8a;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
+/* CARD */
 .card {
-  padding: 2em;
+  background: white;
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 8px;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-.read-the-docs {
-  color: #888;
+.card h2 {
+  margin-bottom: 10px;
+}
+
+/* BUTTONS */
+button {
+  padding: 8px 14px;
+  margin: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button:nth-child(1) {
+  background-color: #22c55e;
+  color: white;
+}
+
+button:nth-child(2) {
+  background-color: #ef4444;
+  color: white;
+}
+
+/* NAVIGATION */
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+  margin: 15px auto;
+}
+
+/* STATS */
+.stats {
+  background: #fff;
+  padding: 15px;
+  max-width: 500px;
+  margin: 10px auto;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* SUMMARY SCREEN */
+.summary {
+  background: white;
+  padding: 30px;
+  max-width: 450px;
+  margin: 80px auto;
+  text-align: center;
+  border-radius: 8px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.summary button {
+  background-color: #2563eb;
+  color: white;
+  margin-top: 20px;
+}
+
+/* TIMER */
+h3 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+/* LOCKED STATUS */
+.locked {
+  color: #ef4444;
+  margin-top: 10px;
+  font-weight: bold;
 }

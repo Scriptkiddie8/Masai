@@ -6,7 +6,7 @@ export default function Summary({
   onReset,
 }) {
   return (
-    <div>
+    <div className="summary">
       <h1>Session Summary</h1>
       <p>Total Patients: {total}</p>
       <p>Treated Patients: {treated}</p>

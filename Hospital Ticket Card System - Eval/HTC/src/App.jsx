@@ -5,6 +5,7 @@ import { localStorageKeys } from "./utils/localStorageKeys";
 import PatientCard from "./components/PatientCard";
 import Summary from "./components/Summary";
 import { patients } from "./data/Patients";
+import "./App.css";
 
 const Session_Time = 15 * 60;
 
@@ -88,7 +89,7 @@ function App() {
     notTreated.includes(currentPatient.id);
 
   return (
-    <div>
+    <div className="container">
       <h1>Hospital OPD System</h1>
       <Timer time={timer} />
 
@@ -102,7 +103,7 @@ function App() {
         isLocked={isLocked}
       />
 
-      <div>
+      <div className="navigation">
         <button
           disabled={currentIndex == 0}
           onClick={() => setCurrentIndex((i) => i - 1)}
@@ -117,7 +118,7 @@ function App() {
         </button>
       </div>
 
-      <div>
+      <div className="stats">
         <p>Treated: {treated.length}</p>
         <p>Not-Treated: {notTreated.length}</p>
         <p>Pending: {pending}</p>

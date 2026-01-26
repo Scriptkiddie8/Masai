@@ -1,6 +1,6 @@
 export default function PatientCard({ patient, onMark, isLocked }) {
   return (
-    <div>
+    <div className="card">
       <h2>Patient Ticket</h2>
       <p>
         <b>Name:</b> {patient.name}
@@ -15,7 +15,7 @@ export default function PatientCard({ patient, onMark, isLocked }) {
         <b>Doctor:</b> {patient.doctor}
       </p>
 
-      <div>
+      <div className="actions">
         <button disabled={isLocked} onClick={() => onMark("treated")}>
           Treated
         </button>
@@ -23,7 +23,7 @@ export default function PatientCard({ patient, onMark, isLocked }) {
           Non-Treated
         </button>
       </div>
-      {isLocked && <p>Status Locked</p>}
+      {isLocked && <p className="locked">Status Locked</p>}
     </div>
   );
 }
